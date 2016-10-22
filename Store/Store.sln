@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreClient", "StoreClient\
 		{7628555C-5BA3-46BF-A49F-6DAAF16EA3EC} = {7628555C-5BA3-46BF-A49F-6DAAF16EA3EC}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreBDO", "StoreBDO\StoreBDO.csproj", "{C9F1477F-D3C5-4283-AFCE-11CF15B3885C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{1BB04FF0-DB2F-4138-B6FF-F0A4188BA29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BB04FF0-DB2F-4138-B6FF-F0A4188BA29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BB04FF0-DB2F-4138-B6FF-F0A4188BA29C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F1477F-D3C5-4283-AFCE-11CF15B3885C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F1477F-D3C5-4283-AFCE-11CF15B3885C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F1477F-D3C5-4283-AFCE-11CF15B3885C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F1477F-D3C5-4283-AFCE-11CF15B3885C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
