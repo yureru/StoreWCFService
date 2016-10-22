@@ -55,9 +55,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StoreBDO\StoreBDO.csproj">
+      <Project>{c9f1477f-d3c5-4283-afce-11cf15b3885c}</Project>
+      <Name>StoreBDO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StoreDataContracts\StoreDataContracts.csproj">
       <Project>{715f943a-8ade-433a-8052-930f8293d26a}</Project>
       <Name>StoreDataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StoreLogic\StoreLogic.csproj">
+      <Project>{9728806c-b0f7-4433-afdf-35561e707a33}</Project>
+      <Name>StoreLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -4,24 +4,43 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+
 using StoreDataContracts;
+using StoreLogic;
+using StoreBDO;
 
 namespace StoreService
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código y en el archivo de configuración a la vez.
     public class ProductService : IProductService
     {
+
+        #region Members
+
+        //ProductBDO _product;
+        ProductLogic _productLogic = new ProductLogic();
+
+        #endregion // Members
+
         public Product GetProduct(int id)
         {
-            var product = new Product();
+
+            /*var product = new Product();
 
             product.ProductID = 7;
             product.ProductName = "Zanahoria";
             product.UnitPrice = 4.90m;
             product.QuantityPerUnit = "Kg";
 
+            return product;*/
+            var productBDO = _productLogic.GetProduct(10);
+            var product = new Product();
+            TranslateProductBDOToProductDTO(productBDO, product);
+
             return product;
         }
+
+        #region Interface Implementations
 
         public bool UpdateProduct(Product product, ref string message)
         {
@@ -45,8 +64,9 @@ namespace StoreService
             }
             else
             {
-                message = "Product updated successfully";
-                result = true;
+                var productBDO = new ProductBDO();
+                TranslateProductDTOToProductBDO(product, productBDO);
+                return _productLogic.UpdateProduct(productBDO, ref message);
             }
 
             return result;
@@ -56,5 +76,31 @@ namespace StoreService
         {
             return product.ToString();
         }
+
+        #endregion // Interface Implementations
+
+        #region Private Helpers
+
+        void TranslateProductBDOToProductDTO(ProductBDO productBDO, Product product)
+        {
+            product.ProductName = productBDO.ProductName;
+            product.ProductID = productBDO.ProductID;
+            product.MakerName = productBDO.MakerName;
+            product.QuantityPerUnit = productBDO.QuantityPerUnit;
+            productBDO.UnitPrice = productBDO.UnitPrice;
+            productBDO.Discontinued = productBDO.Discontinued;
+        }
+
+        void TranslateProductDTOToProductBDO(Product product, ProductBDO productBDO)
+        {
+            productBDO.ProductName = product.ProductName;
+            productBDO.ProductID = product.ProductID;
+            productBDO.MakerName = product.MakerName;
+            productBDO.QuantityPerUnit = product.QuantityPerUnit;
+            productBDO.UnitPrice = product.UnitPrice;
+            productBDO.Discontinued = product.Discontinued;
+        }
+
+        #endregion // Private Helpers
     }
 }
