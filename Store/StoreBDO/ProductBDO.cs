@@ -18,7 +18,7 @@ namespace StoreBDO
         public decimal UnitPrice { get; set; }
         public bool Discontinued { get; set; }
         public int UnitsInStock { get; set; }
-        public int UnitsInOrder { get; set; }
+        public int UnitsOnOrder { get; set; }
         public int ReorderLevel { get; set; }
 
 

@@ -31,7 +31,7 @@ namespace StoreLogic
             }
 
             // a product can't be discontinued if they're non-fulfilled orders
-            if (product.Discontinued && productInDB.UnitsInOrder > 0)
+            if (product.Discontinued && productInDB.UnitsOnOrder > 0)
             {
                 message = "cannot discontinue this product";
                 return false;
