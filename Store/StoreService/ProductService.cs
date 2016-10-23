@@ -8,6 +8,7 @@ using System.Text;
 using StoreDataContracts;
 using StoreLogic;
 using StoreBDO;
+using StoreFaultContracts;
 
 namespace StoreService
 {
@@ -24,11 +25,31 @@ namespace StoreService
 
         public Product GetProduct(int id)
         {
-            var productBDO = _productLogic.GetProduct(id);
+            ProductBDO productBDO = null;
+            try
+            {
+                productBDO = _productLogic.GetProduct(id);
+            }
+
+            catch (Exception err)
+            {
+                var msg = err.Message;
+                var reason = "GetProduct Exception";
+                throw new FaultException<ProductFault>(new ProductFault(msg), reason);
+            }
 
             if (productBDO == null)
             {
-                throw new Exception("No product found for id " + id);
+                var msg = String.Format("No product found for id {0}", id);
+                var reason = "GetProduct Empty Product";
+                if (id == 999)
+                {
+                    throw new Exception(msg);
+                }
+                else
+                {
+                    throw new FaultException<ProductFault>(new ProductFault(msg), reason);
+                }
             }
 
             var product = new Product();
@@ -63,7 +84,18 @@ namespace StoreService
             {
                 var productBDO = new ProductBDO();
                 TranslateProductDTOToProductBDO(product, productBDO);
-                return _productLogic.UpdateProduct(productBDO, ref message);
+
+                try
+                {
+                    result = _productLogic.UpdateProduct(productBDO, ref message);
+                }
+                catch (Exception err)
+                {
+                    var msg = err.Message;
+                    var reason = "UpdateProduct Exception";
+                    throw new FaultException<ProductFault>(new ProductFault(msg), reason);
+                }
+
             }
 
             return result;

@@ -63,6 +63,10 @@
       <Project>{715f943a-8ade-433a-8052-930f8293d26a}</Project>
       <Name>StoreDataContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StoreFaultContracts\StoreFaultContracts.csproj">
+      <Project>{76f384dc-1e8a-4640-af99-3af370c561d1}</Project>
+      <Name>StoreFaultContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StoreLogic\StoreLogic.csproj">
       <Project>{9728806c-b0f7-4433-afdf-35561e707a33}</Project>
       <Name>StoreLogic</Name>

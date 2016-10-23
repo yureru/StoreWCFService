@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 
 using StoreDataContracts;
+using StoreFaultContracts;
 
 namespace StoreService
 {
@@ -18,9 +19,11 @@ namespace StoreService
     public interface IProductService
     {
         [OperationContract]
+        [FaultContract(typeof(ProductFault))]
         Product GetProduct(int id);
 
         [OperationContract]
+        [FaultContract(typeof(ProductFault))]
         bool UpdateProduct(Product product, ref string message);
 
         [OperationContract]
