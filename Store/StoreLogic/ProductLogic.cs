@@ -5,46 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 
 using StoreBDO;
+using StoreDAL;
 
 namespace StoreLogic
 {
     public class ProductLogic
     {
 
+        ProductDAO _productDAO = new ProductDAO();
+
         public ProductBDO GetProduct(int id)
         {
-            // Dummy data
-            ProductBDO product = new ProductBDO();
-
-            product.ProductName = "Lettuce";
-            product.MakerName = "Ranch Natural";
-            product.ProductID = 11;
-            product.QuantityPerUnit = "1";
-            product.UnitPrice = 8.90m;
-            product.UnitsInStock = 100;
-            product.UnitsInOrder = 5;
-            product.ReorderLevel = 20;
-            product.Discontinued = false;
-
-            return product;
+            return _productDAO.GetProduct(id);
         }
 
         public bool UpdateProduct(ProductBDO product, ref string message)
         {
-            if (product == null)
+            var productInDB = GetProduct(product.ProductID);
+
+            // invalid product to update
+            if (productInDB == null)
             {
-                message = "Cannot get this product from the DB";
+                message = "cannot get product for this ID";
                 return false;
             }
 
-            if (product.Discontinued && product.UnitsInOrder > 0)
+            // a product can't be discontinued if they're non-fulfilled orders
+            if (product.Discontinued && productInDB.UnitsInOrder > 0)
             {
-                message = "Cannot discontinue this product since they're unfulfilled orders";
+                message = "cannot discontinue this product";
                 return false;
             }
-
-            // TODO: Update product here
-            return true;
+            else
+            {
+                return _productDAO.UpdateProduct(product, ref message);
+            }
         }
 
     }

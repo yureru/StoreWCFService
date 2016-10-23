@@ -48,6 +48,10 @@
       <Project>{c9f1477f-d3c5-4283-afce-11cf15b3885c}</Project>
       <Name>StoreBDO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StoreDAL\StoreDAL.csproj">
+      <Project>{538c8ff2-78be-48db-b150-d60707d88309}</Project>
+      <Name>StoreDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
