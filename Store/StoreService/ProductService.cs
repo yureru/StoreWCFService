@@ -24,16 +24,13 @@ namespace StoreService
 
         public Product GetProduct(int id)
         {
+            var productBDO = _productLogic.GetProduct(id);
 
-            /*var product = new Product();
+            if (productBDO == null)
+            {
+                throw new Exception("No product found for id " + id);
+            }
 
-            product.ProductID = 7;
-            product.ProductName = "Zanahoria";
-            product.UnitPrice = 4.90m;
-            product.QuantityPerUnit = "Kg";
-
-            return product;*/
-            var productBDO = _productLogic.GetProduct(10);
             var product = new Product();
             TranslateProductBDOToProductDTO(productBDO, product);
 
@@ -87,8 +84,8 @@ namespace StoreService
             product.ProductID = productBDO.ProductID;
             product.MakerName = productBDO.MakerName;
             product.QuantityPerUnit = productBDO.QuantityPerUnit;
-            productBDO.UnitPrice = productBDO.UnitPrice;
-            productBDO.Discontinued = productBDO.Discontinued;
+            product.UnitPrice = productBDO.UnitPrice;
+            product.Discontinued = productBDO.Discontinued;
         }
 
         void TranslateProductDTOToProductBDO(Product product, ProductBDO productBDO)

@@ -55,9 +55,43 @@ namespace StoreDAL
 
         public bool UpdateProduct(ProductBDO product, ref string message)
         {
-            // TODO: Connect to the DB
             message = "product updated successfully";
-            return true;
+            var ret = true;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                var cmdStr =
+                    @"UPDATE products
+                      SET ProductName=@name,
+                      QuantityPerUnit=@unit,
+                      UnitPrice=@price,
+                      Discontinued=@discontinued
+                      WHERE ProductID=@id";
+
+                using (SqlCommand cmd = new SqlCommand(cmdStr, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", product.ProductName);
+                    cmd.Parameters.AddWithValue("@unit", product.QuantityPerUnit);
+                    cmd.Parameters.AddWithValue("@price", product.UnitPrice);
+                    // MakerName doesn't exists in the DB
+                    //cmd.Parameters.AddWithValue("@maker", product.MakerName);
+                    cmd.Parameters.AddWithValue("@discontinued", product.Discontinued);
+                    cmd.Parameters.AddWithValue("@id", product.ProductID);
+
+                    conn.Open();
+                    // here we're checking if the query executed was different to zero it "means" that th eproduct wasn't found
+                    // but actually it could update two or more products, so it's better to compare to zero if we want to know
+                    // if there wasn't an update, or it caused two or more updates in the query, which means some products
+                    // have the same, repeated, id.
+                    if (cmd.ExecuteNonQuery() != 1)
+                    {
+                        message = "no product was updated";
+                        ret = false;
+                    }
+                }
+            }
+
+            return ret;
         }
 
     }
