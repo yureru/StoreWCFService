@@ -22,11 +22,12 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="36d4d3b4-98f7-4b49-a08a-4ed01ad73b25" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?xsd=xsd0" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="a8fcb895-fbb8-4fe7-a924-2fe9383f22b4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?xsd=xsd1" />
+    <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="7d622a6a-088a-4eee-9a36-5fe7fff40a13" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?wsdl" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="e19af9c6-32cd-4494-be86-b48b5ce6bf83" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?disco" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="aebb8d50-71ef-4f3d-a68e-509a99a8d539" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?xsd=xsd2" />
-    <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="7d622a6a-088a-4eee-9a36-5fe7fff40a13" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="afcdbcf8-a420-4797-8ba0-b13c14700c7e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?xsd=xsd3" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="36d4d3b4-98f7-4b49-a08a-4ed01ad73b25" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="a8fcb895-fbb8-4fe7-a924-2fe9383f22b4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/StoreService/ProductService/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

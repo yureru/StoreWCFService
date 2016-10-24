@@ -64,6 +64,9 @@
     <None Include="Service References\ProductServiceRef\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProductServiceRef\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductServiceRef\ProductService.wsdl" />
     <None Include="Service References\ProductServiceRef\StoreClient.ProductServiceRef.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
